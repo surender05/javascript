@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .row{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <button id="addRow">Add Row</button>
+    <div id="main">
+        <div class="row">
+            <ul>
+                <li class="sr_no">Sr no</li>
+                <li>Nishant </li>
+                <li>Kumar</li>
+                <li>Rahul</li>
+                <li>Anand</li>
+                <li class="delete">delete</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        (function(){
+            var ele = document.querySelector("#addRow");
+            var main = document.querySelector("#main");
+            var rowEle = document.querySelector(".row")
+            ele.addEventListener("click",function(){
+                var crEle = document.createElement("div");
+                crEle.setAttribute("class","row")
+                crEle.innerHTML = rowEle.innerHTML
+                main.append(crEle)
+                deleteRow();
+                srNo();
+            })
+
+            function deleteRow(){
+               document.querySelectorAll(".delete").forEach((ele,i)=>ele.addEventListener("click",function(){
+                 this.parentElement.parentElement.remove()
+               }))
+            }
+            function srNo(){
+                document.querySelectorAll(".sr_no").forEach((ele,i)=>{
+                    ele.textContent = i+1;
+                })
+            }
+        })();
+    </script>
+</body>
+</html>

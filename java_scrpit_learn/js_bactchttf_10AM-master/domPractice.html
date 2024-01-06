@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p><input type="text" id="searchInput"></p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>show</th>
+        </tr>
+        <tr>
+            <td>Nishant</td>
+            <td>nishant@k.com</td>
+            <td class="show">show</td>
+        </tr>
+        <tr>
+            <td>Rahul</td>
+            <td>nishant@k.com</td>
+            <td class="show">show</td>
+        </tr>
+        <tr>
+            <td>Amit</td>
+            <td>nishant@k.com</td>
+            <td class="show">show</td>
+        </tr>
+        <tr>
+            <td>Suresh</td>
+            <td>nishant@k.com</td>
+            <td class="show">show</td>
+        </tr>
+    </table>
+    <script>
+        (function () {
+            var table = document.querySelector("table");
+            var tr = table.getElementsByTagName("tr");
+            console.log(tr)
+            searchInput.addEventListener("keyup", function () {
+                for (let i = 0; i < tr.length; i++) {
+                    var td = tr[i].getElementsByTagName("td")[0];
+                   try{
+                        if (td.textContent.toUpperCase().includes(this.value.toUpperCase())) {
+                            tr[i].style.display = "";
+                        }
+                        else {
+                            tr[i].style.display = "none";
+                        }
+                    }catch(err){
+
+                    }
+                    
+                }
+            })
+        }
+        )();
+    </script>
+</body>
+
+</html>

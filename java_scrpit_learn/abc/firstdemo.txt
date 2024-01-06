@@ -1,0 +1,24 @@
+website 
+first = html, css, js  browser  front end
+
+
+
+second = php,python,java,node js   server apache,tomcat,ngnix backend
+
+database = mongodb
+
+javascript (js) is a lightweight interpreted language
+
+
+line 1;
+line 2;
+line 3;
+line 4;
+
+
+js is sync / async 
+
+
+// operator,keyword,object,function,class
+// object prototype based
+

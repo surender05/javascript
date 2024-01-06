@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="employeeform" name="empForm">
+        <p>
+            <small id="errorName" style="color:red;"></small><br>
+            <input type="text" name="emp_name" id="namefield" placeholder="Enter Your Name">
+        </p>
+        <p>
+            <select name="department" id="department">
+
+            </select>
+        </p>
+        <p>
+            <select name="Practices" id="practices">
+
+            </select>
+        </p>
+        <p>
+            <input type="submit" value="Submit">
+        </p>
+    </form>
+
+    <script>
+
+        var jsonData = [
+            { department: "IT", practices: ["DXC", "CSD"] },
+            { department: "HR", practices: ["HRX", "CRX"] },
+            { department: "FINANCE", practices: ["PAYROL", "SALES"] },
+            { department: "SUPPORT", practices: ["CUSTOMER", "CLIENT", "EMPLOYEE"] },
+
+        ]
+        var departmentData = jsonData.map((value, index) => {
+            return `<option value='${value.department}'>${value.department}</option>`
+        })
+        var practicesData = jsonData[0].practices.map((value, index) => {
+            return `<option value='${value}'>${value}</option>`
+        })
+        department.innerHTML = departmentData.join(" ");
+        practices.innerHTML = practicesData.join(" ");
+
+        department.addEventListener("change", function () {
+            var practicesData = jsonData.find(ele => ele.department === this.value);
+            var data = practicesData.practices.map((value, index) => {
+                return `<option value='${value}'>${value}</option>`
+            })
+
+            practices.innerHTML = data.join(" ");
+        })
+
+
+        const validateName = (nameStr) => {
+              ///^[a-z][a-z\s]*$/
+              //  const re = /^[a-zA-Z]+(?:-[a-zA-Z]+)*$/
+              const re =/^[a-z][a-z\s]*$/
+                return re.test(nameStr)
+        }
+        const validateBlankField = (str)=>{
+            return str.trim().length > 0
+        }
+        employeeform.onsubmit = function (event) {
+            event.preventDefault();
+            var formStatus = 1;
+            var empName = document.forms['empForm']['emp_name'].value;
+            var department = document.forms['empForm']['department'].value;
+            var practices = document.forms['empForm']['practices'].value;
+            console.log(empName,department,practices)
+            if(!validateBlankField(empName)){
+                errorName.textContent = "*Required field"
+                formStatus = 0;
+                return;
+            }
+            if(!validateName(empName)){
+                errorName.textContent = "Your Name Incorrect (Should be only letter and space)"
+                formStatus = 0;
+                return; 
+            }
+        
+
+        }
+    </script>
+</body>
+
+</html>

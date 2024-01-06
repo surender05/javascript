@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+
+    <button onclick="callApi()">Data Mangao nA</button>
+    <div id="kumar">
+
+    </div>
+    <script>
+
+      async   function callApi(){
+            var url = "https://reqres.in/api/users?page=2";
+           const res =  await fetch(url);
+           const obj = await res.json()
+            var da = obj.data.map(ele=>{
+                return `<p>${ele.first_name}</p>`
+            })
+          kumar.innerHTML = da.join(" ");
+
+      }
+       
+
+
+    </script>
+</body>
+</html>

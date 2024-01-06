@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        .active {
+            background-color: #ccc;
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="accordion">
+        <button class="title">Title 1</button>
+        <div class="panel">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis delectus beatae perspiciatis maxime. Deserunt autem enim natus tenetur! Asperiores nulla necessitatibus iste placeat voluptatem dolore aliquid itaque nobis magni voluptatum totam, explicabo sint molestias numquam optio, at ipsum? Doloribus expedita necessitatibus quam accusamus! Deserunt repellat omnis eos ipsa ducimus neque aut obcaecati, quos laborum reprehenderit mollitia error? Quas quo repellendus dicta inventore aperiam quae maiores praesentium quia, fugit nihil ad facilis! Pariatur, dolore sequi? Voluptatum cum at necessitatibus! Dicta quos vel excepturi tenetur est molestias a? Labore laboriosam, quis rerum aliquam in quisquam similique debitis harum repellendus ad, esse numquam?
+        </div>
+        <button class="title">Title 2</button>
+        <div class="panel">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam deleniti eius incidunt repudiandae, ut odit maxime in voluptatem ullam molestias amet fugit voluptates expedita aliquam alias dolores! Veniam beatae recusandae repudiandae expedita fugiat, ex tempora ea nemo pariatur rerum enim dolor officia, laudantium atque placeat quos doloremque dolorem. Exercitationem, tenetur?
+        </div>
+        <button class="title">Title 3</button>
+        <div class="panel">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio maiores quo, ipsam voluptatum magnam eligendi, id facilis quaerat non suscipit atque sed ratione vero dolor quae expedita optio itaque! Voluptatum hic adipisci reprehenderit, quasi accusantium quidem perferendis minima laudantium ratione animi molestias recusandae maiores, distinctio ea velit tenetur nisi atque repellendus? Ab incidunt ex perferendis necessitatibus dolor porro accusantium reiciendis at veritatis officia, quibusdam architecto laudantium perspiciatis ipsum repudiandae, aliquam tempora sit sapiente debitis asperiores vitae distinctio, dolorum repellat. Laudantium odit nostrum quas, laborum mollitia cum, consequuntur aliquam perferendis ea placeat possimus ipsum, iure molestiae impedit debitis autem alias. Eius modi possimus officia. Maxime praesentium sapiente error! Assumenda deserunt autem sequi! Rem quidem dignissimos consequuntur modi provident accusamus similique natus reiciendis nihil iusto eveniet numquam hic fuga laboriosam, distinctio vel necessitatibus. Praesentium eaque dolore, blanditiis labore esse sit alias possimus nemo, sequi illo exercitationem fugiat reprehenderit atque, unde assumenda consequuntur!
+        </div>
+    </div>
+
+    <script>
+        (function(){
+            let previous = null;
+            var title = document.querySelectorAll(".title");
+            var panelall = document.querySelectorAll(".panel");
+            title.forEach((ele,i)=>
+                ele.addEventListener("click",function(){
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if(panel.style.maxHeight){
+                        panel.style.maxHeight = "";
+                    }
+                    else{
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                        try{
+                        panelall[previous].style.maxHeight = "" ;
+                        title[previous].classList.toggle('active')
+                        previous = i;
+                        }catch(err){
+                            previous = i;   
+                        }
+                    }
+                })
+            )
+        })();
+    </script>
+</body>
+
+</html>
